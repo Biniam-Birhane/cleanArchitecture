@@ -9,8 +9,10 @@ class UserModel extends User {
     required super.createdAt,
     required super.name,
     required super.avatar,
+    required super.article
   });
 
+  
   factory UserModel.fromJson(String source) =>
       UserModel.fromMap(jsonDecode(source) as DataMap);
 
@@ -19,23 +21,26 @@ class UserModel extends User {
             avatar: map['avatar'] as String,
             id: map['id'] as String,
             createdAt: map['createdAt'] as String,
-            name: map['name']);
+            name: map['name'],
+            article: map['article']);
 
   UserModel copyWith({
     String? id,
     String? createdAt,
     String? name,
     String? avatar,
+    String? article,
   }) {
     return UserModel(
         id: id ?? this.id,
         createdAt: createdAt ?? this.createdAt,
         name: name ?? this.name,
-        avatar: avatar ?? this.avatar);
+        avatar: avatar ?? this.avatar,
+        article: article ?? this.article);
   }
 
   DataMap toMap() =>
-      {"id": id, "createdAt": createdAt, "name": name, "avatar": avatar};
+      {"id": id, "createdAt": createdAt, "name": name, "avatar": avatar, "article":article,};
 
   String toJson() => jsonEncode(toMap());
 }

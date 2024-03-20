@@ -15,8 +15,24 @@ class GettingUsers extends AuthenticationState {
   const GettingUsers();
 }
 
+class UpdatingUser extends AuthenticationState {
+  const UpdatingUser();
+}
+
+class DeletingUser extends AuthenticationState {
+  const DeletingUser();
+}
+
 class UserCreated extends AuthenticationState {
   const UserCreated();
+}
+
+class UserUpdated extends AuthenticationState {
+  const UserUpdated();
+}
+
+class UserDeleted extends AuthenticationState {
+  const UserDeleted();
 }
 
 class UsersLoaded extends AuthenticationState {
@@ -25,6 +41,13 @@ class UsersLoaded extends AuthenticationState {
   @override
   List<Object> get props => users.map((user) => user.id).toList();
 }
+
+class SingleUserLoaded extends AuthenticationState {
+  const SingleUserLoaded(this.user);
+  final List<User> user; 
+}
+
+
 
 class AuthenticationError extends AuthenticationState {
   const AuthenticationError(this.message);
